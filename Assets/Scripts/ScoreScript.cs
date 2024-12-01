@@ -13,6 +13,7 @@ public class ScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Update score text on the screen
         ScoreTextGameObject.GetComponent<TMP_Text>().text = $"Score: {GameState.Score}";
     }
 }

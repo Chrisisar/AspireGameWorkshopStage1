@@ -11,6 +11,7 @@ public class CoinSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //Create a single coin at the start of the game
         GameObject go = Instantiate(CoinPrefab);
     }
 
@@ -20,7 +21,11 @@ public class CoinSpawner : MonoBehaviour
         if (ShouldSpawnCoin)
         {
             ShouldSpawnCoin = false;
+
+            //Create new object from prefab
             GameObject go = Instantiate(CoinPrefab);
+
+            //Select a random platform and set new coin's poisition right above it
             var selectedPlatform = Platforms[Random.Range(0, Platforms.Count)];
             Debug.Log("Coin Spawned");
             go.transform.position = selectedPlatform.transform.position + new Vector3(0, 1, 0);

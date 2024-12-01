@@ -14,13 +14,20 @@ public class CoinBehaviour : MonoBehaviour
         
     }
 
+    // OnTriggerEnter2D is called when two colliders intersect and gameobject with this script has a IsTrigger flag ticked
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Check if collision object is the Player
         if (collision != null && collision.gameObject.name == "Player")
         {
+            //Increase score
             GameState.Score++;
-            var coindSpawner = GameObject.FindAnyObjectByType<CoinSpawner>();
-            coindSpawner.ShouldSpawnCoin = true;
+
+            //Tell CoinSpawner it should spawn a new coin
+            var coinSpawner = GameObject.FindAnyObjectByType<CoinSpawner>();
+            coinSpawner.ShouldSpawnCoin = true;
+
+            //Remove this coin from the game
             Destroy(gameObject);
         }
     }
